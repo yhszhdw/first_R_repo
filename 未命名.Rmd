@@ -1,0 +1,40 @@
+---
+title: "R_markdown.mark"
+output: html_document
+date: "2025-09-07"
+---
+```{r cars}
+
+```
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(broom)
+data(mtcars)
+df <- mtcars %>% rownames_to_column("car")
+head(df)
+
+```
+
+
+```{r cars}
+summary(df)
+ggplot(df, aes(wt, mpg, color=as.factor(cyl))) + geom_point(size=3) + theme_minimal()
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+fit <- lm(mpg ~ wt, data=df)
+tidy(fit)
+glance(fit)
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
